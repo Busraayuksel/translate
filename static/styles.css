@@ -1,0 +1,336 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+#sidebar {
+  width: 250px;
+  background-color: #666666;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  /* overflow: auto; */
+}
+
+#header {
+  background-color: #666666;
+  padding: 10px;
+  text-align: center;
+}
+h1 {
+  color: #000000;
+}
+#sözlükler {
+  color: #f0f3f5;
+}
+#dictionary-list {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+#dictionary-list a {
+  color: #f0f3f5;
+  font-weight: bold;
+  font-size: large;
+}
+
+#dictionary-list a:hover {
+  color: #333; /* Mouse üzerine gelinceki rengi değişecek */
+  font-weight: bold;
+}
+
+#content {
+  margin-left: 270px;
+  padding: 20px;
+}
+
+#translation-box {
+  margin-top: 20px;
+}
+
+#word-list {
+  margin-top: 20px;
+  border-collapse: collapse;
+  width: 100%;
+  overflow: auto; /* Scrollbar*/
+  max-height: 200px; /* Scrollbar hight */
+}
+
+#word-list th,
+#word-list td {
+  border: 1px solid #ddd;
+  padding: 14px;
+  text-align: left;
+}
+
+#word-list th {
+  background-color: #444;
+  color: white;
+}
+
+#language-dropdown {
+  margin-top: 10px;
+}
+
+#add-dictionary-form {
+  margin-top: 20px;
+}
+
+#alert-box {
+  color: darkslateblue;
+  font-weight: bold;
+  font-size: large;
+}
+#error-message-box {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(43, 35, 35, 0.223);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: #6e6969;
+}
+
+#close-error-box {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 30px;
+  color: #6e6969;
+}
+
+#error-message-text {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container .row {
+  background-color: #6e6969;
+  padding: 20px 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+input {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 18px;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 18px;
+  margin-left: 10px;
+  transition: 0.3s ease-in-out;
+}
+
+select {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.sub-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  margin-top: 20px;
+  gap: 20px;
+}
+.result {
+  display: none;
+  color: #fff;
+}
+
+button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+#pop {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(43, 35, 35, 0.223);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: #6e6969;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  min-height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.pop-content {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+.close {
+  position: absolute;
+  right: 6px;
+  top: 2px;
+  font-size: 35px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.close:active {
+  transform: scale(0.9);
+}
+
+tr td {
+  font-size: 20px;
+  font-weight: bold;
+  color: #222222;
+}
+
+.bin {
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 14px 0px;
+  text-align: left;
+}
+.delete-word:hover {
+  transition: all 0.3s ease-in-out;
+  transform: scale(1.2);
+}
+#dictionary-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#dictionary-list .dictionary-list-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  transition: all 0.3s ease-in-out;
+}
+
+#dictionary-list .dictionary-list-item a {
+  text-decoration: none;
+  color: #333;
+}
+
+#dictionary-list .dictionary-list-item .delete-dictionary-button {
+  float: right;
+  color: #f00;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+}
+
+#dictionary-list .dictionary-list-item .delete-dictionary-button:hover {
+  transform: scale(1.2);
+}
+
+.header {
+  cursor: pointer;
+}
+
+/*spinner*/
+.custom-loader {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  border-radius: 50%;
+  -webkit-mask: radial-gradient(farthest-side, #0000 40%, #000 41%);
+  mask: radial-gradient(farthest-side, #0000 40%, #000 41%);
+  background: linear-gradient(0deg, #17111b89 50%, rgb(45, 34, 48) 0) center/4px
+      100%,
+    linear-gradient(90deg, #3c2b4c40 50%, #281b2dbf 0) center/100% 4px;
+  background-repeat: no-repeat;
+  animation: s3 1s infinite steps(12);
+}
+.custom-loader::before,
+.custom-loader::after {
+  content: '';
+  grid-area: 1/1;
+  border-radius: 50%;
+  background: inherit;
+  opacity: 0.915;
+  transform: rotate(30deg);
+}
+.custom-loader::after {
+  opacity: 0.83;
+  transform: rotate(60deg);
+}
+
+@keyframes s3 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+#spinner {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(130, 109, 109, 0.5);
+  backdrop-filter: blur(10px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#empty-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25rem;
+}
+
+#empty-dictionary-message {
+  color: #6e6969;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 20px;
+  flex: 1 1 auto;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% extends 'base.html' %} {% block title %}Page Title{% endblock %} {%block
+sidebar%} {% include "sidebar.html"%} {%endblock%} {% block content %}
+<div id="error-message-box">
+  <span id="close-error-box">&times;</span>
+  <p id="error-message-text">{{ error_message }}</p>
+</div>
+<!-- <img src="C:\Users\busra\Desktop\MVC\templates\translate.jpg" alt="translate" border="0" align="right" width="200" height="150"/> -->
+<img
+  src="{{ url_for('static', filename='translate.gif') }}"
+  alt="translate.gif"
+  border="0"
+  align="right"
+  width="300"
+  height="150"
+/>
+<div id="content">
+  <h1 class="header">TRANSLATE</h1>
+
+  <table id="word-list">
+    <thead>
+      <tr>
+        <th>Dil</th>
+        <th>Kelime</th>
+        <th>Anlamı</th>
+        <th></th>
+      </tr>
+      {% for word in translations: %}
+      <tr>
+        <td>{{ word.source_language }}-{{word.target_language}}</td>
+        <td>{{ word.source_text }}</td>
+        <td>{{ word.target_text }}</td>
+        <td class="bin">
+          <span class="delete-word" data-word-id="{{ word.id }}">🚮</span>
+        </td>
+      </tr>
+      {% endfor%}
+    </thead>
+    <tbody>
+      <!-- Ekrandan seçilen sözlükteki kelimeler buraya gelecek. -->
+    </tbody>
+  </table>
+  {% if translations|length == 0 %}
+  <div id="empty-list">
+    <div id="empty-dictionary-message">Sözlükte kelime bulunmamaktadır.</div>
+  </div>
+  {% endif %}
+</div>
+
+<script>
+  // Dil verilerini içeren JavaScript nesnesi
+</script>
+
+{% endblock %}

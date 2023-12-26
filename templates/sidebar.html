@@ -1,0 +1,23 @@
+<div id="sidebar">
+  <div id="header">
+    <h1 id="sözlükler">Sözlükler</h1>
+    <button id="add-dictionary-button">Yeni Sözlük</button>
+    
+  </div>
+  <hr />
+  <ul id="dictionary-list">
+    {% for dictionary in dicts %}
+    <li class="dictionary-list-item">
+        <span>{{ loop.index }}. </span>
+        <a href="/dict/{{ dictionary.id }}">{{ dictionary.name }}</a>
+        <span class="delete-dictionary-button" data-dict-id="{{ dictionary.id }}">
+          <i class="fa-solid fa-trash"></i>
+        </span>
+    </li>
+  {% endfor %}
+
+    </li>
+  </ul>
+
+  {%block modal%} {% include "modal.html" %} {%endblock%}
+</div>
